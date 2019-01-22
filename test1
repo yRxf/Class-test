@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+class World
+{
+    private:
+      string str;
+    public:
+      void input();
+      void show();
+};
+
+void World::show()
+{
+    cout << str;
+}
+
+void World::input()
+{
+    cout << "Please:" << endl;
+    getline(cin, str);
+}
+int main()
+{
+    World Hello;
+    Hello.input();
+    Hello.show();
+    return 0;
+}
