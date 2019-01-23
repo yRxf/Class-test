@@ -1,0 +1,46 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+
+const int SIZE = 50;
+struct customer
+{
+    char fullname[SIZE];
+    double payment;
+};
+
+int main()
+{
+    stack<customer> S;
+    customer Item;
+    double price;
+    string ch = "";
+    cout << "Please:" << endl;
+    while (ch != "q" && ch != "quit")
+    {
+        cout << "请输入水果名称:";
+        cin.getline(Item.fullname,SIZE-1);
+        cout << "请输入价格:";
+        cin >> Item.payment;
+        S.push(Item);
+        cout << S.top().fullname << " : " << S.top().payment << endl;
+        cout << "请输入任意键继续选择输入q或quit结束！" << endl;
+        cin >> ch;
+        cin.get();
+    }
+    cout << endl
+         << "--------------买单-------------" << endl;
+
+    while (!S.empty())
+    {
+        cout << S.top().fullname << " : " << S.top().payment << endl;
+        cout << "是否需要购买(Y/N)" << endl;
+        char isml;
+        cin >> isml;
+        if(isml=='Y')
+            price += S.top().payment;
+        S.pop();
+    }
+    cout << "总价:" << price << endl;
+    return 0;
+}
